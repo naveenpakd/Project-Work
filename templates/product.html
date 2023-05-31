@@ -1,0 +1,112 @@
+{% extends 'main.html' %}
+ {% load static %} 
+ 
+ {% block css %}
+ 
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+
+<style>
+  .add-to-cart,
+  .like {
+    background: #ff9f1a;
+    padding: 1.2em 1.5em;
+    border: none;
+    text-transform: UPPERCASE;
+    font-weight: bold;
+    color: #fff;
+    -webkit-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+  }
+
+  .add-to-cart:hover,
+  .like:hover {
+    background: #b36800;
+    color: #fff;
+  }
+</style>
+
+{% endblock css%} {% block body %}
+
+<div class="container">
+  <br />
+  <nav aria-label="breadcrumb ">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home'%}">Home</a></li>
+      <li class="breadcrumb-item">
+     
+        
+      </li>
+    </ol>
+  </nav>
+ <div>
+  
+  
+    
+ </div>
+ 
+  <div class="card">
+    <div class="container-fliud product_data">
+      <div class="wrapper row">
+        <div class="preview col-md-6 data">
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active ass" id="pic-1">
+              <img src="{{product.product_image.url}}" width="500px" height="500px">
+            </div>
+          </div>
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title">{{product.name}}</h3>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no">41 reviews</span>
+          </div>
+          <p class="product-description">{{product.description}}</p>
+
+          <h4 class="price">
+            Selling price: <span>₹{{product.price}}</span>
+          </h4>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-2">
+               <div class="button row flex" style="font-family:Rajdhani;">
+                <form action="/add-to-cart" class="d-inline">
+                    <input type="hidden" name="prod_id" value="{{product.id}}">
+                   <h1>{{product.id}}</h1>
+                    <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+                </form>
+                <a href="{% url 'showcart'%}" class="btn btn-warning shadow px-5 py-2 ms-4">Showcart</a>
+               </div> 
+
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<br />
+<br />
+{% block js %}
+
+<script src="{% static '/js/jQuery.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+{% endblock js %} 
+
+
+
+{% endblock body %}

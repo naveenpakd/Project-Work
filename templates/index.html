@@ -1,0 +1,72 @@
+{% extends 'main.html'%}
+{% load static %}
+
+{% block body %}
+
+<section class="product_section layout_padding">
+    <div class="container">
+       <div class="heading_container heading_center">
+          <h2>
+             Our <span>products</span>
+          </h2>
+       </div>
+       <div class="row">
+         {% for item in product%}
+          <div class="col-sm-6 col-md-4 col-lg-4">
+             <div class="box">
+                <div class="option_container">
+                   <div class="options">
+                     <a href="{% url 'view' item.id %}" class="option2">
+                        viewsss
+                        </a>
+                      <!-- <a href="" class="option2">
+                      Buy Now
+                      </a> -->
+                   </div>
+                </div>
+                <div class="img-box">
+                   <img src="{{item.product_image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                   <h5>
+                      {{item.name}}
+                   </h5>
+                   
+                </div>
+                <h4>  ${{item.price}} </h4>
+                
+             </div>
+
+             <div class="row">
+               <a class="btn btn-success shadow px-5 py-2" href="{% url 'update_product' item.id %}">Edit</a>
+               
+             </div>
+             <div class="row">
+               <a class="btn btn-danger shadow px-5 py-2" href="{% url 'delete_product' item.id %}">Delete</a>
+               
+             </div>
+            
+          </div>
+
+          
+
+          
+          {% endfor %}
+          
+ 
+ 
+          
+             </div>
+          </div>
+       </div>
+       
+    </div>
+ </section>
+
+ <div class="container">
+   <!-- <button type="submit" class="btn btn-primary shadow px-5 py-2">Add Produc</button> -->
+   <a class="btn btn-primary shadow px-5 py-2" href="{% url 'create_product' %}">Add Product</a>
+ </div>
+
+{% endblock body %}
+
